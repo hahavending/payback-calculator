@@ -234,7 +234,7 @@
             // 3. 计算月度总营业额 (Monthly Gross Revenue)
             // 算法公式: 日客流量 * 转化率 * (商品单价 / 100) * 每单件数 * 30天
             const grossRevenue = traffic * conversion * (itemPrice / 100) * itemsPerOrder * 30;
-            document.getElementById('resGrossRevenue').textContent = '$' + grossRevenue.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            document.getElementById('resGrossRevenue').textContent = '$' + grossRevenue.toLocaleString(undefined, {minimumFractionDigits: 0, maximumFractionDigits: 0});
 
             // 4. 计算回本周期 (Payback Period) - 单位：月
             // 算法公式: (产品价格 * 设备数量) / (月营业额 * 利润率 / 100)
@@ -245,7 +245,7 @@
                 document.getElementById('resPayback').textContent = 'N/A (Revenue/Margin is 0)';
             } else {
                 const payback = (productPrice * deviceUnits) / denominator;
-                document.getElementById('resPayback').textContent = payback.toFixed(2) + ' Months';
+                document.getElementById('resPayback').textContent = payback.toFixed(0) + ' Months';
             }
         }
 
