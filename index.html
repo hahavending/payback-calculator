@@ -3,260 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payback Calculator</title>
+    <title>Corporate Payback Calculator</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
-        /* Custom styles to widen the slider and style the thumb */
+        /* Modern Minimalist Slider - Elite Consulting Style */
         input[type="range"] {
             -webkit-appearance: none;
             appearance: none;
             width: 100%;
-            height: 12px;
-            border-radius: 6px;
+            height: 6px; /* Sleeker, thinner line */
+            border-radius: 3px;
             outline: none;
             transition: background 0.1s ease;
         }
         input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            width: 22px;
-            height: 22px;
+            width: 18px;
+            height: 18px;
             border-radius: 50%;
-            background: #2563eb;
+            background: #0f172a; /* Sophisticated Slate-900 */
             cursor: pointer;
             border: 2px solid #ffffff;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+            transition: transform 0.1s ease;
+        }
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
         }
         input[type="range"]::-moz-range-thumb {
-            width: 22px;
-            height: 22px;
+            width: 18px;
+            height: 18px;
             border-radius: 50%;
-            background: #2563eb;
+            background: #0f172a;
             cursor: pointer;
             border: 2px solid #ffffff;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+        }
+        /* Remove spin buttons from number input */
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type="number"] {
+            -moz-appearance: textfield;
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 min-h-screen py-6 px-4 md:px-8">
+<body class="bg-[#f8fafc] text-[#334155] min-h-screen py-12 px-4 sm:px-6 lg:px-8 font-sans antialiased">
 
-    <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
-        <div class="bg-blue-600 text-white px-6 py-4">
-            <h1 class="text-xl font-bold tracking-wide">Payback Calculator</h1>
-            <p class="text-xs text-blue-100 mt-1">Internal Sales Estimation Tool | Desktop & Mobile Optimized</p>
+    <div class="max-w-5xl mx-auto bg-white rounded-xl shadow-sm border border-[#e2e8f0] overflow-hidden">
+        
+        <div class="bg-[#0f172a] text-white px-8 py-6 border-b border-[#1e293b]">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-xl font-semibold tracking-wider text-[#f8fafc] uppercase">Payback Calculator</h1>
+                    <p class="text-xs text-[#94a3b8] mt-1 font-medium tracking-wide">PROPRIETARY SALES ESTIMATION & ROI ANALYSIS TOOL</p>
+                </div>
+                <div class="hidden sm:block text-right">
+                    <span class="text-[10px] bg-[#1e293b] text-[#cbd5e1] border border-[#334155] px-2.5 py-1 rounded font-mono tracking-widest">v2.2.0-PREMIUM</span>
+                </div>
+            </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-gray-200">
-            <div class="p-6 space-y-6">
-                <h2 class="text-lg font-semibold text-gray-700 border-b pb-2">Sales Inputs</h2>
-
-                <div>
-                    <label class="block text-sm font-medium text-gray-600 mb-1">Product Model</label>
-                    <select id="productModel" class="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none text-sm"></select>
+        <div class="grid grid-cols-1 md:grid-cols-12 divide-y md:divide-y-0 md:divide-x divide-[#e2e8f0]">
+            
+            <div class="p-8 md:col-span-7 space-y-6 bg-white">
+                <div class="flex items-center justify-between border-b border-[#f1f5f9] pb-3">
+                    <h2 class="text-xs font-bold text-[#0f172a] uppercase tracking-widest">Variable Sales Inputs</h2>
+                    <span class="text-[11px] text-[#94a3b8]">Adjust parameters below</span>
                 </div>
 
                 <div>
-                    <div class="flex justify-between text-sm font-medium text-gray-600 mb-1">
-                        <span>Daily foot traffic</span>
-                        <span id="v_dailyTraffic" class="text-blue-600 font-bold">210</span>
+                    <label class="block text-[11px] font-bold text-[#475569] uppercase tracking-wider mb-2">Product Model</label>
+                    <select id="productModel" class="w-full bg-[#f8fafc] border border-[#cbd5e1] rounded text-[#0f172a] font-medium px-3 py-2.5 focus:ring-1 focus:ring-[#0f172a] focus:border-[#0f172a] focus:outline-none text-sm transition-all"></select>
+                </div>
+
+                <div>
+                    <label class="block text-[11px] font-bold text-[#475569] uppercase tracking-wider mb-2">Device Units (Qty)</label>
+                    <div class="flex items-center w-32 bg-[#f8fafc] border border-[#cbd5e1] rounded overflow-hidden focus-within:ring-1 focus-within:ring-[#0f172a] focus-within:border-[#0f172a]">
+                        <button type="button" id="btnMinus" class="px-3 py-2 text-[#475569] hover:bg-[#f1f5f9] hover:text-[#0f172a] font-bold transition-colors select-none text-sm">&minus;</button>
+                        <input type="number" id="deviceUnits" value="1" min="1" class="w-full text-center bg-transparent border-none py-1.5 text-sm font-semibold text-[#0f172a] focus:outline-none">
+                        <button type="button" id="btnPlus" class="px-3 py-2 text-[#475569] hover:bg-[#f1f5f9] hover:text-[#0f172a] font-bold transition-colors select-none text-sm">&plus;</button>
+                    </div>
+                </div>
+
+                <div class="pt-2"><hr class="border-[#f1f5f9]"></div>
+
+                <div class="space-y-2">
+                    <div class="flex justify-between items-baseline">
+                        <span class="text-[11px] font-bold text-[#475569] uppercase tracking-wider">Daily foot traffic</span>
+                        <span id="v_dailyTraffic" class="text-sm font-bold text-[#0f172a]">210</span>
                     </div>
                     <input type="range" id="dailyTraffic" min="0" max="500" value="210" class="cursor-pointer">
-                    <div class="flex justify-between text-xs text-gray-400 mt-1 px-1">
+                    <div class="flex justify-between text-[10px] text-[#94a3b8] font-medium px-0.5">
                         <span>0</span>
                         <span>500</span>
                     </div>
                 </div>
 
-                <div>
-                    <div class="flex justify-between text-sm font-medium text-gray-600 mb-1">
-                        <span>Traffic conversion rate</span>
-                        <span id="v_conversionRate" class="text-blue-600 font-bold">6%</span>
-                    </div>
-                    <input type="range" id="conversionRate" min="0" max="15" step="0.1" value="6" class="cursor-pointer">
-                    <div class="flex justify-between text-xs text-gray-400 mt-1 px-1">
-                        <span>0%</span>
-                        <span>15%</span>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="flex justify-between text-sm font-medium text-gray-600 mb-1">
-                        <span>Average item price ($)</span>
-                        <span id="v_itemPrice" class="text-blue-600 font-bold">$3</span>
-                    </div>
-                    <input type="range" id="itemPrice" min="0" max="15" step="0.5" value="3" class="cursor-pointer">
-                    <div class="flex justify-between text-xs text-gray-400 mt-1 px-1">
-                        <span>$0</span>
-                        <span>$15</span>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="flex justify-between text-sm font-medium text-gray-600 mb-1">
-                        <span>Items per order</span>
-                        <span id="v_itemsPerOrder" class="text-blue-600 font-bold">2</span>
-                    </div>
-                    <input type="range" id="itemsPerOrder" min="0" max="3" step="1" value="2" class="cursor-pointer">
-                    <div class="flex justify-between text-xs text-gray-400 mt-1 px-1">
-                        <span>0</span>
-                        <span>3</span>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="flex justify-between text-sm font-medium text-gray-600 mb-1">
-                        <span>Profit margin</span>
-                        <span id="v_profitMargin" class="text-blue-600 font-bold">60%</span>
-                    </div>
-                    <input type="range" id="profitMargin" min="0" max="120" step="1" value="60" class="cursor-pointer">
-                    <div class="flex justify-between text-xs text-gray-400 mt-1 px-1">
-                        <span>0%</span>
-                        <span>120%</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="p-6 bg-gray-50/50 space-y-6 flex flex-col justify-between">
-                <div>
-                    <h2 class="text-lg font-semibold text-gray-700 border-b pb-2 mb-4">Master Data & Outputs</h2>
-                    
-                    <div class="grid grid-cols-2 gap-4 mb-6">
-                        <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm">
-                            <span class="block text-xs text-gray-400 font-medium uppercase">Product Price</span>
-                            <span id="displayPrice" class="text-lg font-bold text-gray-700">$-</span>
-                        </div>
-                        <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm">
-                            <span class="block text-xs text-gray-400 font-medium uppercase">Device of Units</span>
-                            <span id="displayUnits" class="text-lg font-bold text-gray-700">-</span>
-                        </div>
-                    </div>
-
-                    <div class="space-y-4">
-                        <div class="bg-blue-50 border border-blue-100 p-4 rounded-xl">
-                            <span class="block text-sm font-medium text-blue-600">Gross Revenue (Monthly)</span>
-                            <span id="resGrossRevenue" class="text-2xl font-black text-blue-700">$0.00</span>
-                        </div>
-
-                        <div class="bg-green-50 border border-green-100 p-4 rounded-xl">
-                            <span class="block text-sm font-medium text-green-600">Payback Period</span>
-                            <span id="resPayback" class="text-3xl font-black text-green-700">0.00 Months</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="text-xs text-gray-400 bg-white p-3 rounded-lg border border-gray-200">
-                    <strong>Formula Reference:</strong><br>
-                    • Gross revenue = Traffic * Conversion * (Price / 100) * Items * 30 Days<br>
-                    • Payback = (Prod Price * Units) / (Gross revenue * Margin / 100)
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // =========================================================================
-        // 【管理员后台产品档案维护区】
-        // 提示：增加新产品或修改价格时，严格按照现有格式增删键值对即可，末尾记得加逗号。
-        // =========================================================================
-        const productDatabase = {
-            // 格式 -> "产品型号名称": { price: 单套产品价格, units: 单套设备包含的数量 }
-            "Mini 360":    { price: 2999, units: 2 },
-            "Pluss 440":   { price: 3499, units: 2 },
-            "Pro 542":     { price: 4499, units: 2 },
-            "Freezer 550": { price: 4999, units: 2 },
-            "Max 620":     { price: 4699, units: 2 },
-            "Max 620S":    { price: 5499, units: 2 },
-            "Ultra 1200":  { price: 6999, units: 2 }
-        };
-        
-        // 页面首次打开时，默认选中的初始产品型号（必须与上方数据库中的某一个名字完全一致）
-        const defaultProduct = "Mini 360";
-        // =========================================================================
-
-        // 【初始化下拉框选项】自动读取上方维护的数据库，动态渲染前端下拉菜单
-        const modelSelect = document.getElementById('productModel');
-        Object.keys(productDatabase).forEach(model => {
-            const option = document.createElement('option');
-            option.value = model;
-            option.textContent = model;
-            if(model === defaultProduct) option.selected = true;
-            modelSelect.appendChild(option);
-        });
-
-        // 绑定前端滑块控制项
-        const inputs = ['dailyTraffic', 'conversionRate', 'itemPrice', 'itemsPerOrder', 'profitMargin'];
-        const elements = {};
-        inputs.forEach(id => elements[id] = document.getElementById(id));
-
-        // 【动态滑块背景色渲染】将滑块左侧已选中的轨道实时涂成浅蓝色 (#93c5fd)，右侧未选中保持浅灰
-        function updateSliderTrackBackground(el) {
-            const min = el.min || 0;
-            const max = el.max || 100;
-            const val = el.value;
-            const percentage = ((val - min) / (max - min)) * 100;
-            el.style.background = `linear-gradient(to right, #93c5fd 0%, #93c5fd ${percentage}%, #e5e7eb ${percentage}%, #e5e7eb 100%)`;
-        }
-
-        // 【实时更新滑块数值标签】销售拖动滑块时，右上角的数字实时变动
-        function updateLabels() {
-            document.getElementById('v_dailyTraffic').textContent = elements.dailyTraffic.value;
-            document.getElementById('v_conversionRate').textContent = elements.conversionRate.value + '%';
-            document.getElementById('v_itemPrice').textContent = '$' + elements.itemPrice.value;
-            document.getElementById('v_itemsPerOrder').textContent = elements.itemsPerOrder.value;
-            document.getElementById('v_profitMargin').textContent = elements.profitMargin.value + '%';
-            
-            // 循环遍历所有滑块，更新它们的左侧浅蓝色进度条
-            inputs.forEach(id => updateSliderTrackBackground(elements[id]));
-        }
-
-        // =========================================================================
-        // 【核心财务计算逻辑】
-        // =========================================================================
-        function calculate() {
-            updateLabels();
-
-            // 1. 获取当前选中的产品对应的后台档案数据
-            const currentModel = modelSelect.value;
-            const productPrice = productDatabase[currentModel].price;
-            const deviceUnits = productDatabase[currentModel].units;
-
-            // 将读取到的产品价格和数量自动带入到右侧的看板中展示
-            document.getElementById('displayPrice').textContent = '$' + productPrice.toLocaleString();
-            document.getElementById('displayUnits').textContent = deviceUnits;
-
-            // 2. 抓取前台销售输入的参数值
-            const traffic = parseFloat(elements.dailyTraffic.value);
-            const conversion = parseFloat(elements.conversionRate.value); 
-            const itemPrice = parseFloat(elements.itemPrice.value);
-            const itemsPerOrder = parseFloat(elements.itemsPerOrder.value);
-            const margin = parseFloat(elements.profitMargin.value);
-
-            // 3. 计算月度总营业额 (Monthly Gross Revenue)
-            // 算法公式: 日客流量 * 转化率 * (商品单价 / 100) * 每单件数 * 30天
-            const grossRevenue = traffic * conversion * (itemPrice / 100) * itemsPerOrder * 30;
-            document.getElementById('resGrossRevenue').textContent = '$' + grossRevenue.toLocaleString(undefined, {minimumFractionDigits: 0, maximumFractionDigits: 0});
-
-            // 4. 计算回本周期 (Payback Period) - 单位：月
-            // 算法公式: (产品价格 * 设备数量) / (月营业额 * 利润率 / 100)
-            const denominator = grossRevenue * (margin / 100);
-
-            // 防止分母为 0 导致报错（如当利润率或营业额被滑动到 0 时）
-            if (denominator === 0 || isNaN(denominator)) {
-                document.getElementById('resPayback').textContent = 'N/A (Revenue/Margin is 0)';
-            } else {
-                const payback = (productPrice * deviceUnits) / denominator;
-                document.getElementById('resPayback').textContent = payback.toFixed(0) + ' Months';
-            }
-        }
-
-        // 监听下拉框和滑块的 input 事件，只要一发生拖动或切换，立刻触发自动计算
-        modelSelect.addEventListener('change', calculate);
-        inputs.forEach(id => {
-            elements[id].addEventListener('input', calculate);
-        });
-
-        // 页面首次加载完毕后，自动运行一次计算以初始化默认值
-        calculate();
-    </script>
-</body>
-</html>
+                <div class="space-y-2">
+                    <div class="flex justify-between items-baseline">
+                        <span class="text-[11px] font-bold text-[#475569] uppercase tracking-wider">Traffic conversion rate</span>
+                        <span id="v_conversionRate" class="text-sm font-
