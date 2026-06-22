@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise Competitive Payback Analyzer</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        /* Modern Minimalist Slider - Elite Consulting Style */
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            outline: none;
+            transition: background 0.1s ease;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #0f172a;
+            cursor: pointer;
+            border: 2px solid #ffffff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+            transition: transform 0.1s ease;
+        }
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+        }
+        input[type="range"]::-moz-range-thumb {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #0f172a;
+            cursor: pointer;
+            border: 2px solid #ffffff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+        }
+        /* Remove spin buttons from number input */
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+    </style>
+</head>
+<body class="bg-[#f8fafc] text-[#334155] min-h-screen py-8 px-4 sm:px-6 lg:px-8 font-sans antialiased">
+
+    <div class="max-w-7xl mx-auto bg-white rounded-xl shadow-sm border border-[#e2e8f0] overflow-hidden">
+        
+        <div class="bg-[#0f172a] text-white px-8 py-5 border-b border-[#1e293b]">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-lg font-semibold tracking-wider text-[#f8fafc] uppercase">Commercial Payback & TCO Matrix</h1>
+                    <p class="text-xs text-[#94a3b8] mt-0.5 font-medium tracking-wide">COMPETITIVE VALUATION & MARGIN RECOVERY ANALYSIS</p>
+                </div>
+                <div class="hidden sm:block font-mono text-[10px] bg-[#1e293b] text-[#cbd5e1] border border-[#334155] px-2.5 py-1 rounded tracking-widest">
+                    CONFIDENTIAL / INTERNAL USE ONLY
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x divide-[#e2e8f0] bg-white">
+            
+            <div class="p-6 lg:col-span-3 space-y-5 bg-white">
+                <div class="border-b border-[#f1f5f9] pb-2">
+                    <h2 class="text-xs font-bold text-[#0f172a] uppercase tracking-widest">HAHA Sales Inputs</h2>
+                </div>
+
+                <div>
+                    <label class="block text-[10px] font-bold text-[#64748b] uppercase tracking-wider mb-1.5">Product Model</label>
+                    <select id="productModel" class="w-full bg-[#f8fafc] border border-[#cbd5e1] rounded text-[#0f172a] font-medium px-2.5 py-2 focus:ring-1 focus:ring-[#0f172a] focus:border-[#0f172a] focus:outline-none text-xs transition-all"></select>
+                </div>
+
+                <div>
+                    <label class="block text-[10px] font-bold text-[#64748b] uppercase tracking-wider mb-1.5">Device Units (Qty)</label>
+                    <div class="flex items-center w-28 bg-[#f8fafc] border border-[#cbd5e1] rounded overflow-hidden focus-within:ring-1 focus-within:ring-[#0f172a] focus-within:border-[#0f172a]">
+                        <button type="button" id="btnMinus" class="px-2.5 py-1 text-[#475569] hover:bg-[#f1f5f9] hover:text-[#0f172a] font-bold transition-colors select-none text-xs">&minus;</button>
+                        <input type="number" id="deviceUnits" value="1" min="1" class="w-full text-center bg-transparent border-none py-1 text-xs font-semibold text-[#0f172a] focus:outline-none">
+                        <button type="button" id="btnPlus" class="px-2.5 py-1 text-[#475569] hover:bg-[#f1f5f9] hover:text-[#0f172a] font-bold transition-colors select-none text-xs">&plus;</button>
+                    </div>
+                </div>
+
+                <div class="py-1"><hr class="border-[#f1f5f9]"></div>
+
+                <div class="space-y-1.5">
+                    <div class="flex justify-between items-baseline">
+                        <span class="text-[10px] font-bold text-[#475569] uppercase tracking-wider">Daily foot traffic</span>
+                        <span id="v_dailyTraffic" class="text-xs font-bold text-[#0f172a]">210</span>
+                    </div>
+                    <input type="range" id="dailyTraffic" min="0" max="500" value="210" class="cursor-pointer">
+                    <div class="flex justify-between text-[9px] text-[#94a3b8] font-medium px-0.5">
+                        <span>0</span>
+                        <span>500</span>
+                    </div>
+                </div>
+
+                <div class="space-y-1.5">
+                    <div class="flex justify-between items-baseline">
+                        <span class="text-[10px] font-bold text-[#475569] uppercase tracking-wider">Conversion rate</span>
+                        <span id="v_conversionRate" class="text-xs font-bold text-[#0f172a]">6%</span>
+                    </div>
+                    <input type="range" id="conversionRate" min="0" max="15" step="0.1" value="6" class="cursor-pointer">
+                    <div class="flex justify-between text-[9px] text-[#94a3b8] font-medium px-0.5">
+                        <span>0%</span>
+                        <span>15%</span>
+                    </div>
+                </div>
+
+                <div class="space-y-1.5">
+                    <div class="flex justify-between items-baseline">
+                        <span class="text-[10px] font-bold text-[#475569] uppercase tracking-wider">Average item price</span>
+                        <span id="v_itemPrice" class="text-xs font-bold text-[#0f172a]">$3</span>
+                    </div>
+                    <input type="range" id="itemPrice" min="0" max="15" step="0.5" value="3" class="cursor-pointer">
+                    <div class="flex justify-between text-[9px] text-[#94a3b8] font-medium px-0.5">
+                        <span>$0</span>
+                        <span>$15</span>
+                    </div>
+                </div>
+
+                <div class="space-y-1.5">
+                    <div class="flex justify-between items-baseline">
+                        <span class="text-[10px] font-bold text-[#475569] uppercase tracking-wider">Items per order</span>
+                        <span id="v_itemsPerOrder" class="text-xs font-bold text-[#0f172a]">2</span>
+                    </div>
+                    <input type="range" id="itemsPerOrder" min="0" max="3" step="1" value="2" class="cursor-pointer">
+                    <div class="flex justify-between text-[9px] text-[#94a3b8] font-medium px-0.5">
+                        <span>0</span>
+                        <span>3</span>
+                    </div>
+                </div>
+
+                <div class="space-y-1.5">
+                    <div class="flex justify-between items-baseline">
+                        <span class="text-[10px] font-bold text-[#475569] uppercase tracking-wider">Profit margin</span>
+                        <span id="v_profitMargin" class="text-xs font-bold text-[#0f172a]">60%</span>
+                    </div>
+                    <input type="range" id="profitMargin" min="0" max="120" step="1" value="60" class="cursor-pointer">
+                    <div class="flex justify-between text-[9px] text-[#94a3b8] font-medium px-0.5">
+                        <span>0%</span>
+                        <span>120%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-6 lg:col-span-3 bg-[#f8fafc]/40 flex flex-col justify-between border-r-0">
+                <div class="space-y-4">
+                    <div class="border-b border-[#e2e8f0] pb-2">
+                        <h2 class="text-xs font-bold text-[#0f172a] uppercase tracking-widest">HAHA Financial Summary</h2>
+                    </div>
+
+                    <div class="space-y-2.5">
+                        <div class="bg-white p-3 rounded border border-[#e2e8f0]">
+                            <span class="block text-[9px] font-bold text-[#94a3b8] uppercase tracking-wider mb-0.5">Base Product Price</span>
+                            <span id="hahaPrice" class="text-base font-semibold text-[#0f172a] font-mono">$-</span>
+                        </div>
+
+                        <div class="bg-white p-3 rounded border border-[#e2e8f0]">
+                            <span class="block text-[9px] font-bold text-[#3b82f6] uppercase tracking-wider mb-0.5">Gross Revenue (Monthly)</span>
+                            <span id="hahaGrossRevenue" class="text-base font-bold text-[#1e3a8a] font-mono">$0</span>
+                        </div>
+
+                        <div class="bg-[#f1f5f9] p-3 rounded border border-[#e2e8f0] space-y-1.5 text-xs">
+                            <span class="block text-[9px] font-bold text-[#475569] uppercase tracking-widest border-b border-[#cbd5e1] pb-0.5 mb-1">Monthly Cost Overheads</span>
+                            <div class="flex justify-between text-[#64748b]">
+                                <span>Platform Fee:</span>
+                                <span id="hahaPlatformFee" class="font-mono text-[#334155] font-semibold">$15</span>
+                            </div>
+                            <div class="flex justify-between text-[#64748b]">
+                                <span>Transaction Fee:</span>
+                                <span id="hahaTxFee" class="font-mono text-[#334155] font-semibold">$0</span>
+                            </div>
+                            <div class="flex justify-between text-[#64748b]">
+                                <span>Data Infrastructure:</span>
+                                <span id="hahaDataFee" class="font-mono text-[#334155] font-semibold">$15</span>
+                            </div>
+                            <div class="flex justify-between text-[#64748b]">
+                                <span>POS Hardware Rental:</span>
+                                <span id="hahaPosRental" class="font-mono text-[#334155] font-semibold">$10</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-[#eff6ff] p-4 rounded border-l-4 border-[#2563eb] shadow-2xs">
+                            <span class="block text-[9px] font-bold text-[#2563eb] uppercase tracking-widest mb-0.5">Payback Horizon</span>
+                            <span id="hahaPayback" class="text-xl font-black text-[#1e40af] font-mono">0 Months</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-6 lg:col-span-3 bg-[#f8fafc]/90 flex flex-col justify-between border-l-0">
+                <div class="space-y-4">
+                    <div class="border-b border-[#e2e8f0] pb-2">
+                        <h2 id="compHeaderTitle" class="text-xs font-bold text-red-700 uppercase tracking-widest">Competitor</h2>
+                    </div>
+
+                    <div class="space-y-2.5">
+                        <div class="bg-white p-3 rounded border border-[#e2e8f0]">
+                            <span class="block text-[9px] font-bold text-[#94a3b8] uppercase tracking-wider mb-0.5">Base Product Price</span>
+                            <span id="compPrice" class="text-base font-semibold text-[#0f172a] font-mono">$-</span>
+                        </div>
+
+                        <div class="bg-white p-3 rounded border border-[#e2e8f0]">
+                            <span class="block text-[9px] font-bold text-red-500 uppercase tracking-wider mb-0.5">Gross Revenue (Monthly)</span>
+                            <span id="compGrossRevenue" class="text-base font-bold text-red-900 font-mono">$0</span>
+                        </div>
+
+                        <div class="bg-[#f1f5f9] p-3 rounded border border-[#e2e8f0] space-y-1.5 text-xs">
+                            <span class="block text-[9px] font-bold text-[#475569] uppercase tracking-widest border-b border-[#cbd5e1] pb-0.5 mb-1">Monthly Cost Overheads</span>
+                            <div class="flex justify-between text-[#64748b]">
+                                <span>Platform Fee:</span>
+                                <span id="compPlatformFee" class="font-mono text-[#334155] font-semibold">$0</span>
+                            </div>
+                            <div class="flex justify-between text-[#64748b]">
+                                <span>Transaction Fee:</span>
+                                <span id="compTxFee" class="font-mono text-[#334155] font-semibold">$0</span>
+                            </div>
+                            <div class="flex justify-between text-[#64748b]">
+                                <span>Data Infrastructure:</span>
+                                <span id="compDataFee" class="font-mono text-[#334155] font-semibold">$0</span>
+                            </div>
+                            <div class="flex justify-between text-[#64748b]">
+                                <span>POS Hardware Rental:</span>
+                                <span id="compPosRental" class="font-mono text-[#334155] font-semibold">$0</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-[#fef2f2] p-4 rounded border-l-4 border-red-600 shadow-2xs">
+                            <span class="block text-[9px] font-bold text-red-600 uppercase tracking-widest mb-0.5">Payback Horizon</span>
+                            <span id="compPayback" class="text-xl font-black text-red-900 font-mono">0 Months</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-6 lg:col-span-3 space-y-5 bg-white">
+                <div class="border-b border-[#f1f5f9] pb-2">
+                    <h2 class="text-xs font-bold text-[#0f172a] uppercase tracking-widest">Competitor Inputs</h2>
+                </div>
+
+                <div>
+                    <label class="block text-[10px] font-bold text-[#64748b] uppercase tracking-wider mb-1.5">Competitor Name</label>
+                    <select id="competitorName" class="w-full bg-[#f8fafc] border border-[#cbd5e1] rounded text-[#0f172a] font-medium px-2.5 py-2 focus:ring-1 focus:ring-[#0f172a] focus:border-[#0f172a] focus:outline-none text-xs transition-all">
+                        <option value="Micromart">Micromart</option>
+                        <option value="365 retail markets">365 retail markets</option>
+                        <option value="Vendera">Vendera</option>
+                        <option value="Qingo">Qingo</option>
+                        <option value="XMAI">XMAI</option>
+                        <option value="Sandstar">Sandstar</option>
+                        <option value="TCN">TCN</option>
+                        <option value="Grabot">Grabot</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-[10px] font-bold text-[#64748b] uppercase tracking-wider mb-1.5">Product Price ($)</label>
+                    <input type="number" id="manualCompPrice" value="3500" min="0" class="w-full bg-[#f8fafc] border border-[#cbd5e1] rounded text-[#0f172a] font-semibold px-2.5 py-2 focus:ring-1 focus:ring-[#0f172a] focus:border-[#0f172a] focus:outline-none text-xs transition-all">
+                    <p class="text-[10px] text-[#94a3b8] mt-1">Enter upfront price manually to refresh matrix maps.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // =========================================================================
+        // 【管理员后台产品档案维护区】
+        // =========================================================================
+        const productDatabase = {
+            "Mini 360":    { price: 2999 },
+            "Pluss 440":   { price: 3499 },
+            "Pro 542":     { price: 4499 },
+            "Freezer 550": { price: 4999 },
+            "Max 620":     { price: 4699 },
+            "Max 620S":    { price: 5499 },
+            "Max 660":     { price: 5099 }, 
+            "Ultra 1200":  { price: 6999 }
+        };
+        const defaultProduct = "Mini 360";
+
+        // =========================================================================
+        // 【竞企资费政策矩阵定义（包含特定条件下的复杂公式回调机制）】
+        // =========================================================================
+        const competitorProfiles = {
+            "Micromart": {
+                platform: 60,
+                posRental: 0,
+                getDataFee: (traffic, conversion) => 20 + 0.05 * traffic * (conversion / 100),
+                getTxFee: (avgItemPrice, itemsPerOrder, traffic, conversion) => {
+                    const ticketSize = avgItemPrice * itemsPerOrder;
+                    const rate = 0.04;
+                    const fixed = ticketSize < 8 ? 0.10 : 0.15;
+                    return 30 * (ticketSize * rate + fixed) * traffic * (conversion / 100);
+                }
+            },
+            "365 retail markets": {
+                platform: 90,
+                posRental: 0,
+                getDataFee: () => 10,
+                getTxFee: (avgItemPrice, itemsPerOrder, traffic, conversion) => {
+                    return 30 * (avgItemPrice * itemsPerOrder * 0.0575) * traffic * (conversion / 100);
+                }
+            },
+            "Vendera": {
+                platform: 15,
+                posRental: 10,
+                getDataFee: () => 15,
+                getTxFee: (avgItemPrice, itemsPerOrder, traffic, conversion) => {
+                    return 30 * (avgItemPrice * itemsPerOrder * 0.0595) * traffic * (conversion / 100);
+                }
+            },
+            "Qingo": {
+                platform: 15,
+                posRental: 10,
+                getDataFee: () => 15,
+                getTxFee: (avgItemPrice, itemsPerOrder, traffic, conversion) => {
+                    return 30 * (avgItemPrice * itemsPerOrder * 0.0595) * traffic * (conversion / 100);
+                }
+            },
+            "XMAI": {
+                platform: 10,
+                posRental: 14,
+                getDataFee: () => 15,
+                getTxFee: (avgItemPrice, itemsPerOrder, traffic, conversion) => {
+                    return 30 * (avgItemPrice * itemsPerOrder * 0.0595) * traffic * (conversion / 100);
+                }
+            },
+            "Sandstar": {
+                platform: 65,
+                posRental: 0,
+                getDataFee: () => 0,
+                getTxFee: (avgItemPrice, itemsPerOrder, traffic, conversion) => {
+                    return 30 * (avgItemPrice * itemsPerOrder * 0.0595) * traffic * (conversion / 100);
+                }
+            },
+            "TCN": {
+                platform: 12,
+                posRental: 10,
+                getDataFee: () => 10,
+                getTxFee: (avgItemPrice, itemsPerOrder, traffic, conversion) => {
+                    return 30 * (avgItemPrice * itemsPerOrder * 0.0595) * traffic * (conversion / 100);
+                }
+            },
+            "Grabot": {
+                platform: 35.2833,
+                posRental: 0,
+                getDataFee: () => 0,
+                getTxFee: (avgItemPrice, itemsPerOrder, traffic, conversion) => {
+                    return 30 * (avgItemPrice * itemsPerOrder * 0.055 + 0.0353) * traffic * (conversion / 100);
+                }
+            }
+        };
+
+        // =========================================================================
+        // 【系统初始化与 DOM 节点挂载】
+        // =========================================================================
+        const modelSelect = document.getElementById('productModel');
+        Object.keys(productDatabase).forEach(model => {
+            const option = document.createElement('option');
+            option.value = model;
+            option.textContent = model;
+            if(model === defaultProduct) option.selected = true;
+            modelSelect.appendChild(option);
+        });
+
+        const inputs = ['dailyTraffic', 'conversionRate', 'itemPrice', 'itemsPerOrder', 'profitMargin'];
+        const elements = {};
+        inputs.forEach(id => elements[id] = document.getElementById(id));
+        
+        const deviceUnitsInput = document.getElementById('deviceUnits');
+        const competitorSelect = document.getElementById('competitorName');
+        const manualCompPriceInput = document.getElementById('manualCompPrice');
+
+        // 【设备数增量控制逻辑组件】
+        document.getElementById('btnMinus').addEventListener('click', () => {
+            let val = parseInt(deviceUnitsInput.value) || 1;
+            if (val > 1) { deviceUnitsInput.value = val - 1; calculate(); }
+        });
+        document.getElementById('btnPlus').addEventListener('click', () => {
+            let val = parseInt(deviceUnitsInput.value) || 1;
+            deviceUnitsInput.value = val + 1;
+            calculate();
+        });
+        deviceUnitsInput.addEventListener('change', () => {
+            let val = parseInt(deviceUnitsInput.value);
+            if (isNaN(val) || val < 1) deviceUnitsInput.value = 1;
+            calculate();
+        });
+
+        // 【滑块节点颜色轨道自适应动态同步渲染】
+        function updateSliderTrackBackground(el) {
+            const min = el.min || 0;
+            const max = el.max || 100;
+            const val = el.value;
+            const percentage = ((val - min) / (max - min)) * 100;
+            el.style.background = `linear-gradient(to right, #93c5fd 0%, #93c5fd ${percentage}%, #e2e8f0 ${percentage}%, #e2e8f0 100%)`;
+        }
+
+        function updateLabels() {
+            document.getElementById('v_dailyTraffic').textContent = elements.dailyTraffic.value;
+            document.getElementById('v_conversionRate').textContent = elements.conversionRate.value + '%';
+            document.getElementById('v_itemPrice').textContent = '$' + elements.itemPrice.value;
+            document.getElementById('v_itemsPerOrder').textContent = elements.itemsPerOrder.value;
+            document.getElementById('v_profitMargin').textContent = elements.profitMargin.value + '%';
+            inputs.forEach(id => updateSliderTrackBackground(elements[id]));
+        }
+
+        // =========================================================================
+        // 【核心财务核算层 - 双引擎计算结构】
+        // =========================================================================
+        function calculate() {
+            updateLabels();
+
+            // 1. 获取共享输入元数据
+            const deviceUnits = parseInt(deviceUnitsInput.value) || 1;
+            const traffic = parseFloat(elements.dailyTraffic.value);
+            const conversion = parseFloat(elements.conversionRate.value); 
+            const itemPrice = parseFloat(elements.itemPrice.value);
+            const itemsPerOrder = parseFloat(elements.itemsPerOrder.value);
+            const margin = parseFloat(elements.profitMargin.value);
+
+            // 2. 共享基础月总营业额总线公式
+            const globalGrossRevenue = traffic * (conversion / 100) * itemPrice * itemsPerOrder * 30;
+
+            // ==========================================
+            // 【引擎 A : HAHA 品牌专属财务看板计算】
+            // ==========================================
+            const currentHahaModel = modelSelect.value;
+            const hahaProductPrice = productDatabase[currentHahaModel].price;
+            document.getElementById('hahaPrice').textContent = '$' + hahaProductPrice.toLocaleString();
+            document.getElementById('hahaGrossRevenue').textContent = '$' + Math.round(globalGrossRevenue).toLocaleString();
+
+            // 契约项固化资费政策
+            const hahaPlatform = 15;
+            const hahaData = 15;
+            const hahaPosRental = 10;
+            // 交易代收费用公式：30 * (Average item price * Items per order * 5.95% + 0.00) * Daily foot traffic * Traffic conversion rate (注意：百分比处理)
+            const hahaTx = 30 * (itemPrice * itemsPerOrder * 0.0595) * traffic * (conversion / 100);
+
+            document.getElementById('hahaTxFee').textContent = '$' + Math.round(hahaTx).toLocaleString();
+
+            // 测算扣费后HAHA纯运营利润及终极回本周转率
+            const hahaNetDenominator = (globalGrossRevenue * (margin / 100)) - hahaPlatform - hahaTx - hahaData - hahaPosRental;
+            if (hahaNetDenominator <= 0 || isNaN(hahaNetDenominator)) {
+                document.getElementById('hahaPayback').textContent = 'N/A';
+            } else {
+                const hahaPayback = (hahaProductPrice * deviceUnits) / hahaNetDenominator;
+                document.getElementById('hahaPayback').textContent = Math.round(hahaPayback).toLocaleString() + ' Months';
+            }
+
+            // ==========================================
+            // 【引擎 B : 竞争对手特定资费差异化模型计算】
+            // ==========================================
+            const currentCompName = competitorSelect.value;
+            document.getElementById('compHeaderTitle').textContent = currentCompName;
+
+            const compProductPrice = parseFloat(manualCompPriceInput.value) || 0;
+            document.getElementById('compPrice').textContent = '$' + compProductPrice.toLocaleString();
+            document.getElementById('compGrossRevenue').textContent = '$' + Math.round(globalGrossRevenue).toLocaleString();
+
+            // 索引竞企配置器解析对应的动态表达式
+            const compProfile = competitorProfiles[currentCompName];
+            const compPlatform = compProfile.platform;
+            const compPosRental = compProfile.posRental;
+            const compData = compProfile.getDataFee(traffic, conversion);
+            const compTx = compProfile.getTxFee(itemPrice, itemsPerOrder, traffic, conversion);
+
+            // 更新竞企变动费率DOM视图展现层（对数值采用通用四舍五入取整呈现）
+            document.getElementById('compPlatformFee').textContent = '$' + Math.round(compPlatform).toLocaleString();
+            document.getElementById('compTxFee').textContent = '$' + Math.round(compTx).toLocaleString();
+            document.getElementById('compDataFee').textContent = '$' + Math.round(compData).toLocaleString();
+            document.getElementById('compPosRental').textContent = '$' + Math.round(compPosRental).toLocaleString();
+
+            // 测算竞企纯运营利润及回本周期
+            const compNetDenominator = (globalGrossRevenue * (margin / 100)) - compPlatform - compTx - compData - compPosRental;
+            if (compNetDenominator <= 0 || isNaN(compNetDenominator)) {
+                document.getElementById('compPayback').textContent = 'N/A';
+            } else {
+                const compPayback = (compProductPrice * deviceUnits) / compNetDenominator;
+                document.getElementById('compPayback').textContent = Math.round(compPayback).toLocaleString() + ' Months';
+            }
+        }
+
+        // 统一注入驱动触发器监听器
+        modelSelect.addEventListener('change', calculate);
+        competitorSelect.addEventListener('change', calculate);
+        manualCompPriceInput.addEventListener('input', calculate);
+        inputs.forEach(id => {
+            elements[id].addEventListener('input', calculate);
+        });
+
+        // 首次加载初始化数据总线
+        calculate();
+    </script>
+</body>
+</html>
