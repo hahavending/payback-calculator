@@ -178,7 +178,7 @@
 
                 <div class="text-[11px] text-[#64748b] leading-relaxed bg-[#f1f5f9] p-4 rounded border border-[#e2e8f0]">
                     <span class="font-bold text-[#475569] block mb-1">Valuation Methodology:</span>
-                    • Gross Revenue = Traffic × Conversion × (Item Price / 100) × Items × 30 Days<br>
+                    • Gross Revenue = Traffic × (Conversion Rate / 100) × Item Price × Items × 30 Days<br>
                     • Payback Period = (Product Price × Device Units) / (Gross Revenue × Margin / 100)
                 </div>
             </div>
@@ -286,7 +286,7 @@
             const margin = parseFloat(elements.profitMargin.value);
 
             // 3. 计算月营业额 (Monthly Gross Revenue)
-            const grossRevenue = traffic * conversion * (itemPrice / 100) * itemsPerOrder * 30;
+            const grossRevenue = traffic * (conversion / 100) * itemPrice * itemsPerOrder * 30;
             
             // 【优化修改】：使用 Math.round() 进行四舍五入取整，隐藏所有小数位，并保留千分位逗号
             document.getElementById('resGrossRevenue').textContent = '$' + Math.round(grossRevenue).toLocaleString();
