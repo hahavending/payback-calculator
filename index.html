@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Corporate Payback Calculator</title>
+    <title>HAHA Proprietary Payback Analyzer</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
         /* Modern Minimalist Slider - Elite Consulting Style */
@@ -11,7 +11,7 @@
             -webkit-appearance: none;
             appearance: none;
             width: 100%;
-            height: 6px; /* Sleeker, thinner line */
+            height: 6px;
             border-radius: 3px;
             outline: none;
             transition: background 0.1s ease;
@@ -19,10 +19,10 @@
         input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            width: 18px;
-            height: 18px;
+            width: 16px;
+            height: 16px;
             border-radius: 50%;
-            background: #0f172a; /* Sophisticated Slate-900 */
+            background: #0f172a;
             cursor: pointer;
             border: 2px solid #ffffff;
             box-shadow: 0 1px 3px rgba(0,0,0,0.15);
@@ -32,8 +32,8 @@
             transform: scale(1.1);
         }
         input[type="range"]::-moz-range-thumb {
-            width: 18px;
-            height: 18px;
+            width: 16px;
+            height: 16px;
             border-radius: 50%;
             background: #0f172a;
             cursor: pointer;
@@ -51,138 +51,182 @@
         }
     </style>
 </head>
-<body class="bg-[#f8fafc] text-[#334155] min-h-screen py-12 px-4 sm:px-6 lg:px-8 font-sans antialiased">
+<body class="bg-[#f8fafc] text-[#334155] min-h-screen py-10 px-4 sm:px-6 lg:px-8 font-sans antialiased">
 
-    <div class="max-w-5xl mx-auto bg-white rounded-xl shadow-sm border border-[#e2e8f0] overflow-hidden">
+    <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-sm border border-[#e2e8f0] overflow-hidden">
         
-        <div class="bg-[#0f172a] text-white px-8 py-6 border-b border-[#1e293b]">
-            <div class="flex justify-between items-center">
-                <div>
-                    <h1 class="text-xl font-semibold tracking-wider text-[#f8fafc] uppercase">Payback Calculator</h1>
-                    <p class="text-xs text-[#94a3b8] mt-1 font-medium tracking-wide">PROPRIETARY SALES ESTIMATION & ROI ANALYSIS TOOL</p>
-                </div>
-                <div class="hidden sm:block text-right">
-                    <span class="text-[10px] bg-[#1e293b] text-[#cbd5e1] border border-[#334155] px-2.5 py-1 rounded font-mono tracking-widest">v2.2.0-PREMIUM</span>
-                </div>
+        <div class="bg-[#0f172a] text-white px-8 py-5 border-b border-[#1e293b]">
+            <div>
+                <h1 class="text-lg font-semibold tracking-wider text-[#f8fafc] uppercase">HAHA Commercial Payback Matrix</h1>
+                <p class="text-xs text-[#94a3b8] mt-0.5 font-medium tracking-wide">PROPRIETARY ROI TIMELINE & OPERATIONAL RECOVERY MODEL</p>
             </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-12 divide-y md:divide-y-0 md:divide-x divide-[#e2e8f0]">
+        <div class="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-[#e2e8f0] bg-white">
             
-            <div class="p-8 md:col-span-7 space-y-6 bg-white">
-                <div class="flex items-center justify-between border-b border-[#f1f5f9] pb-3">
-                    <h2 class="text-xs font-bold text-[#0f172a] uppercase tracking-widest">Variable Sales Inputs</h2>
-                    <span class="text-[11px] text-[#94a3b8]">Adjust parameters below</span>
+            <div class="p-8 space-y-5 bg-white">
+                <div class="border-b border-[#f1f5f9] pb-2">
+                    <h2 class="text-xs font-bold text-[#0f172a] uppercase tracking-widest">HAHA Sales Inputs</h2>
                 </div>
 
                 <div>
-                    <label class="block text-[11px] font-bold text-[#475569] uppercase tracking-wider mb-2">Product Model</label>
-                    <select id="productModel" class="w-full bg-[#f8fafc] border border-[#cbd5e1] rounded text-[#0f172a] font-medium px-3 py-2.5 focus:ring-1 focus:ring-[#0f172a] focus:border-[#0f172a] focus:outline-none text-sm transition-all"></select>
+                    <label class="block text-[10px] font-bold text-[#64748b] uppercase tracking-wider mb-1.5">Product Model</label>
+                    <select id="productModel" class="w-full bg-[#f8fafc] border border-[#cbd5e1] rounded text-[#0f172a] font-medium px-2.5 py-2 focus:ring-1 focus:ring-[#0f172a] focus:border-[#0f172a] focus:outline-none text-xs transition-all"></select>
                 </div>
 
                 <div>
-                    <label class="block text-[11px] font-bold text-[#475569] uppercase tracking-wider mb-2">Device Units (Qty)</label>
-                    <div class="flex items-center w-32 bg-[#f8fafc] border border-[#cbd5e1] rounded overflow-hidden focus-within:ring-1 focus-within:ring-[#0f172a] focus-within:border-[#0f172a]">
-                        <button type="button" id="btnMinus" class="px-3 py-2 text-[#475569] hover:bg-[#f1f5f9] hover:text-[#0f172a] font-bold transition-colors select-none text-sm">&minus;</button>
-                        <input type="number" id="deviceUnits" value="1" min="1" class="w-full text-center bg-transparent border-none py-1.5 text-sm font-semibold text-[#0f172a] focus:outline-none">
-                        <button type="button" id="btnPlus" class="px-3 py-2 text-[#475569] hover:bg-[#f1f5f9] hover:text-[#0f172a] font-bold transition-colors select-none text-sm">&plus;</button>
+                    <label class="block text-[10px] font-bold text-[#64748b] uppercase tracking-wider mb-1.5">Device Units (Qty)</label>
+                    <div class="flex items-center w-28 bg-[#f8fafc] border border-[#cbd5e1] rounded overflow-hidden focus-within:ring-1 focus-within:ring-[#0f172a] focus-within:border-[#0f172a]">
+                        <button type="button" id="btnMinus" class="px-2.5 py-1 text-[#475569] hover:bg-[#f1f5f9] hover:text-[#0f172a] font-bold transition-colors select-none text-xs">&minus;</button>
+                        <input type="number" id="deviceUnits" value="1" min="1" class="w-full text-center bg-transparent border-none py-1 text-xs font-semibold text-[#0f172a] focus:outline-none">
+                        <button type="button" id="btnPlus" class="px-2.5 py-1 text-[#475569] hover:bg-[#f1f5f9] hover:text-[#0f172a] font-bold transition-colors select-none text-xs">&plus;</button>
                     </div>
                 </div>
 
-                <div class="pt-2"><hr class="border-[#f1f5f9]"></div>
+                <div class="py-0.5"><hr class="border-[#f1f5f9]"></div>
 
-                <div class="space-y-2">
+                <div class="space-y-1.5">
                     <div class="flex justify-between items-baseline">
-                        <span class="text-[11px] font-bold text-[#475569] uppercase tracking-wider">Daily foot traffic</span>
-                        <span id="v_dailyTraffic" class="text-sm font-bold text-[#0f172a]">210</span>
+                        <span class="text-[10px] font-bold text-[#475569] uppercase tracking-wider">Daily foot traffic</span>
+                        <span id="v_dailyTraffic" class="text-xs font-bold text-[#0f172a]">210</span>
                     </div>
                     <input type="range" id="dailyTraffic" min="0" max="500" value="210" class="cursor-pointer">
-                    <div class="flex justify-between text-[10px] text-[#94a3b8] font-medium px-0.5">
+                    <div class="flex justify-between text-[9px] text-[#94a3b8] font-medium px-0.5">
                         <span>0</span>
                         <span>500</span>
                     </div>
                 </div>
 
-                <div class="space-y-2">
+                <div class="space-y-1.5">
                     <div class="flex justify-between items-baseline">
-                        <span class="text-[11px] font-bold text-[#475569] uppercase tracking-wider">Traffic conversion rate</span>
-                        <span id="v_conversionRate" class="text-sm font-bold text-[#0f172a]">6%</span>
+                        <span class="text-[10px] font-bold text-[#475569] uppercase tracking-wider">Conversion rate</span>
+                        <span id="v_conversionRate" class="text-xs font-bold text-[#0f172a]">6%</span>
                     </div>
                     <input type="range" id="conversionRate" min="0" max="15" step="0.1" value="6" class="cursor-pointer">
-                    <div class="flex justify-between text-[10px] text-[#94a3b8] font-medium px-0.5">
+                    <div class="flex justify-between text-[9px] text-[#94a3b8] font-medium px-0.5">
                         <span>0%</span>
                         <span>15%</span>
                     </div>
                 </div>
 
-                <div class="space-y-2">
+                <div class="space-y-1.5">
                     <div class="flex justify-between items-baseline">
-                        <span class="text-[11px] font-bold text-[#475569] uppercase tracking-wider">Average item price</span>
-                        <span id="v_itemPrice" class="text-sm font-bold text-[#0f172a]">$3</span>
+                        <span class="text-[10px] font-bold text-[#475569] uppercase tracking-wider">Average item price</span>
+                        <span id="v_itemPrice" class="text-xs font-bold text-[#0f172a]">$3</span>
                     </div>
                     <input type="range" id="itemPrice" min="0" max="15" step="0.5" value="3" class="cursor-pointer">
-                    <div class="flex justify-between text-[10px] text-[#94a3b8] font-medium px-0.5">
+                    <div class="flex justify-between text-[9px] text-[#94a3b8] font-medium px-0.5">
                         <span>$0</span>
                         <span>$15</span>
                     </div>
                 </div>
 
-                <div class="space-y-2">
+                <div class="space-y-1.5">
                     <div class="flex justify-between items-baseline">
-                        <span class="text-[11px] font-bold text-[#475569] uppercase tracking-wider">Items per order</span>
-                        <span id="v_itemsPerOrder" class="text-sm font-bold text-[#0f172a]">2</span>
+                        <span class="text-[10px] font-bold text-[#475569] uppercase tracking-wider">Items per order</span>
+                        <span id="v_itemsPerOrder" class="text-xs font-bold text-[#0f172a]">2</span>
                     </div>
                     <input type="range" id="itemsPerOrder" min="0" max="3" step="1" value="2" class="cursor-pointer">
-                    <div class="flex justify-between text-[10px] text-[#94a3b8] font-medium px-0.5">
+                    <div class="flex justify-between text-[9px] text-[#94a3b8] font-medium px-0.5">
                         <span>0</span>
                         <span>3</span>
                     </div>
                 </div>
 
-                <div class="space-y-2">
+                <div class="space-y-1.5">
                     <div class="flex justify-between items-baseline">
-                        <span class="text-[11px] font-bold text-[#475569] uppercase tracking-wider">Profit margin</span>
-                        <span id="v_profitMargin" class="text-sm font-bold text-[#0f172a]">60%</span>
+                        <span class="text-[10px] font-bold text-[#475569] uppercase tracking-wider">Profit margin</span>
+                        <span id="v_profitMargin" class="text-xs font-bold text-[#0f172a]">60%</span>
                     </div>
                     <input type="range" id="profitMargin" min="0" max="120" step="1" value="60" class="cursor-pointer">
-                    <div class="flex justify-between text-[10px] text-[#94a3b8] font-medium px-0.5">
+                    <div class="flex justify-between text-[9px] text-[#94a3b8] font-medium px-0.5">
                         <span>0%</span>
                         <span>120%</span>
                     </div>
                 </div>
             </div>
 
-            <div class="p-8 md:col-span-5 bg-[#f8fafc] flex flex-col justify-between space-y-8">
-                <div class="space-y-6">
-                    <div class="border-b border-[#e2e8f0] pb-3">
-                        <h2 class="text-xs font-bold text-[#0f172a] uppercase tracking-widest">Financial Summary</h2>
-                    </div>
-                    
-                    <div class="bg-white p-4 rounded border border-[#e2e8f0] shadow-2xs">
-                        <span class="block text-[10px] font-bold text-[#94a3b8] uppercase tracking-wider mb-1">Base Product Price</span>
-                        <span id="displayPrice" class="text-xl font-bold text-[#0f172a] font-mono">$-</span>
+            <div class="p-8 bg-[#f8fafc]/50 flex flex-col justify-between">
+                <div class="space-y-4">
+                    <div class="border-b border-[#e2e8f0] pb-2">
+                        <h2 class="text-xs font-bold text-[#0f172a] uppercase tracking-widest">HAHA Financial Summary</h2>
                     </div>
 
-                    <div class="space-y-4">
-                        <div class="bg-white p-5 rounded border-l-4 border-[#3b82f6] shadow-2xs">
-                            <span class="block text-[10px] font-bold text-[#3b82f6] uppercase tracking-widest mb-1">Gross Revenue (Monthly)</span>
-                            <span id="resGrossRevenue" class="text-2xl font-bold text-[#1e3a8a] tracking-tight font-mono">$0</span>
+                    <div class="space-y-2.5">
+                        <div class="bg-white p-3 rounded border border-[#e2e8f0] grid grid-cols-2 gap-2">
+                            <div>
+                                <span class="block text-[9px] font-bold text-[#94a3b8] uppercase tracking-wider mb-0.5">Base Price</span>
+                                <span id="hahaPrice" class="text-sm font-semibold text-[#475569] font-mono">$-</span>
+                            </div>
+                            <div>
+                                <span class="block text-[9px] font-bold text-[#0f172a] uppercase tracking-wider mb-0.5">Total CapEx</span>
+                                <span id="hahaTotalPrice" class="text-sm font-bold text-[#0f172a] font-mono">$-</span>
+                            </div>
                         </div>
 
-                        <div class="bg-white p-5 rounded border-l-4 border-[#10b981] shadow-2xs">
-                            <span class="block text-[10px] font-bold text-[#10b981] uppercase tracking-widest mb-1">Estimated Payback Period</span>
-                            <span id="resPayback" class="text-3xl font-black text-[#064e3b] tracking-tight font-mono">0 Months</span>
+                        <div class="bg-white p-3 rounded border border-[#e2e8f0]">
+                            <span class="block text-[9px] font-bold text-[#3b82f6] uppercase tracking-wider mb-0.5">Gross Revenue (Monthly)</span>
+                            <span id="hahaGrossRevenue" class="text-base font-bold text-[#1e3a8a] font-mono">$0</span>
+                        </div>
+
+                        <div class="bg-[#f1f5f9] p-3 rounded border border-[#e2e8f0] space-y-1.5 text-xs">
+                            <span class="block text-[9px] font-bold text-[#475569] uppercase tracking-widest border-b border-[#cbd5e1] pb-0.5 mb-1">Monthly Cost Overheads</span>
+                            <div class="flex justify-between text-[#64748b]">
+                                <span>Platform Fee:</span>
+                                <span id="hahaPlatformFee" class="font-mono text-[#334155] font-semibold">$0</span>
+                            </div>
+                            <div class="flex justify-between text-[#64748b]">
+                                <span>Transaction Fee:</span>
+                                <span id="hahaTxFee" class="font-mono text-[#334155] font-semibold">$0</span>
+                            </div>
+                            <div class="flex justify-between text-[#64748b]">
+                                <span>Cellular Data Fee:</span>
+                                <span id="hahaDataFee" class="font-mono text-[#334155] font-semibold">$0</span>
+                            </div>
+                            <div class="flex justify-between text-[#64748b]">
+                                <span>POS Device Rental:</span>
+                                <span id="hahaPosRental" class="font-mono text-[#334155] font-semibold">$0</span>
+                            </div>
+                            <div class="flex justify-between text-[#64748b]">
+                                <span>AI Recognition Fee:</span>
+                                <span id="hahaAiRecognitionFee" class="font-mono text-[#334155] font-semibold">$0</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-3 rounded border border-[#e2e8f0]">
+                            <span class="block text-[9px] font-bold text-[#059669] uppercase tracking-wider mb-0.5">Net Profit (Monthly)</span>
+                            <span id="hahaNetProfit" class="text-base font-bold text-[#047857] font-mono">$0</span>
+                        </div>
+
+                        <div class="bg-[#eff6ff] p-4 rounded border-l-4 border-[#2563eb] shadow-2xs">
+                            <span class="block text-[9px] font-bold text-[#2563eb] uppercase tracking-widest mb-0.5">Payback Period</span>
+                            <span id="hahaPayback" class="text-xl font-black text-[#1e40af] font-mono">0.0 Months</span>
                         </div>
                     </div>
-                </div>
-
-                <div class="text-[11px] text-[#64748b] leading-relaxed bg-[#f1f5f9] p-4 rounded border border-[#e2e8f0]">
-                    <span class="font-bold text-[#475569] block mb-1">Valuation Methodology:</span>
-                    • Gross Revenue = Traffic × (Conversion Rate / 100) × Item Price × Items × 30 Days<br>
-                    • Payback Period = (Product Price × Device Units) / (Gross Revenue × Margin / 100)
                 </div>
             </div>
+
         </div>
+
+        <div class="bg-[#f8fafc] border-t border-[#e2e8f0] px-8 py-5 text-[11px] text-[#64748b] space-y-2">
+            <div class="text-[#475569] font-bold uppercase tracking-wider text-xs border-b border-[#e2e8f0] pb-1 mb-1.5">
+                Valuation Methodology & Calculation Glossary
+            </div>
+            <p>
+                <strong class="text-[#334155]">1. Gross Revenue (Monthly) Formula:</strong><br>
+                Gross Revenue = Daily Foot Traffic &times; (Traffic Conversion Rate / 100) &times; Average Item Price &times; Items Per Order &times; 30 Days
+            </p>
+            <p>
+                <strong class="text-[#334155]">2. Net Profit (Monthly) Formula:</strong><br>
+                Net Profit = (Gross Revenue &times; Profit Margin / 100) &minus; Platform Fee &minus; Transaction Fee &minus; Cellular Data Fee &minus; POS Device Rental Fee &minus; AI Recognition Fee
+            </p>
+            <p>
+                <strong class="text-[#334155]">3. Payback Period Formula:</strong><br>
+                Payback Period = (Product Price &times; Device Units) / Net Profit <br>
+                <span class="text-[10px] text-[#94a3b8] block mt-0.5 ml-3">※ AI Recognition Fee = Traffic &times; (Conversion Rate / 100) &times; 0.05 &times; 30 Days &times; Device Units. Fixed overheads scale with units.</span>
+            </p>
+        </div>
+
     </div>
 
     <script>
@@ -191,7 +235,7 @@
         // =========================================================================
         const productDatabase = {
             "Mini 360":    { price: 2999 },
-            "Plus 440":   { price: 3499 },
+            "Pluss 440":   { price: 3499 },
             "Pro 542":     { price: 4499 },
             "Freezer 550": { price: 4999 },
             "Max 620":     { price: 4699 },
@@ -199,11 +243,11 @@
             "Max 660":     { price: 5099 }, 
             "Ultra 1200":  { price: 6999 }
         };
-        
         const defaultProduct = "Mini 360";
-        // =========================================================================
 
-        // 【自动渲染下拉菜单选项】
+        // =========================================================================
+        // 【UI 主框架事件绑定】
+        // =========================================================================
         const modelSelect = document.getElementById('productModel');
         Object.keys(productDatabase).forEach(model => {
             const option = document.createElement('option');
@@ -213,40 +257,27 @@
             modelSelect.appendChild(option);
         });
 
-        // 绑定滑块控制器及参数
         const inputs = ['dailyTraffic', 'conversionRate', 'itemPrice', 'itemsPerOrder', 'profitMargin'];
         const elements = {};
         inputs.forEach(id => elements[id] = document.getElementById(id));
         
-        // 绑定设备数量输入框与逻辑按钮
         const deviceUnitsInput = document.getElementById('deviceUnits');
-        const btnMinus = document.getElementById('btnMinus');
-        const btnPlus = document.getElementById('btnPlus');
 
-        // 【设备数量加减按钮交互逻辑】
-        btnMinus.addEventListener('click', () => {
+        document.getElementById('btnMinus').addEventListener('click', () => {
             let val = parseInt(deviceUnitsInput.value) || 1;
-            if (val > 1) {
-                deviceUnitsInput.value = val - 1;
-                calculate();
-            }
+            if (val > 1) { deviceUnitsInput.value = val - 1; calculate(); }
         });
-
-        btnPlus.addEventListener('click', () => {
+        document.getElementById('btnPlus').addEventListener('click', () => {
             let val = parseInt(deviceUnitsInput.value) || 1;
             deviceUnitsInput.value = val + 1;
             calculate();
         });
-
         deviceUnitsInput.addEventListener('change', () => {
             let val = parseInt(deviceUnitsInput.value);
-            if (isNaN(val) || val < 1) {
-                deviceUnitsInput.value = 1; 
-            }
+            if (isNaN(val) || val < 1) deviceUnitsInput.value = 1;
             calculate();
         });
 
-        // 【滑块左侧染色机制】
         function updateSliderTrackBackground(el) {
             const min = el.min || 0;
             const max = el.max || 100;
@@ -255,29 +286,21 @@
             el.style.background = `linear-gradient(to right, #93c5fd 0%, #93c5fd ${percentage}%, #e2e8f0 ${percentage}%, #e2e8f0 100%)`;
         }
 
-        // 【数字实时显示】
         function updateLabels() {
             document.getElementById('v_dailyTraffic').textContent = elements.dailyTraffic.value;
             document.getElementById('v_conversionRate').textContent = elements.conversionRate.value + '%';
             document.getElementById('v_itemPrice').textContent = '$' + elements.itemPrice.value;
             document.getElementById('v_itemsPerOrder').textContent = elements.itemsPerOrder.value;
             document.getElementById('v_profitMargin').textContent = elements.profitMargin.value + '%';
-            
             inputs.forEach(id => updateSliderTrackBackground(elements[id]));
         }
 
         // =========================================================================
-        // 【核心计算层】
+        // 【核心财务核算层】
         // =========================================================================
         function calculate() {
             updateLabels();
 
-            // 1. 读取基础机型价格
-            const currentModel = modelSelect.value;
-            const productPrice = productDatabase[currentModel].price;
-            document.getElementById('displayPrice').textContent = '$' + productPrice.toLocaleString();
-
-            // 2. 获取实时交互值
             const deviceUnits = parseInt(deviceUnitsInput.value) || 1;
             const traffic = parseFloat(elements.dailyTraffic.value);
             const conversion = parseFloat(elements.conversionRate.value); 
@@ -285,32 +308,44 @@
             const itemsPerOrder = parseFloat(elements.itemsPerOrder.value);
             const margin = parseFloat(elements.profitMargin.value);
 
-            // 3. 计算月营业额 (Monthly Gross Revenue)
-            const grossRevenue = traffic * (conversion / 100) * itemPrice * itemsPerOrder * 30;
+            const globalGrossRevenue = traffic * (conversion / 100) * itemPrice * itemsPerOrder * 30;
+
+            const currentHahaModel = modelSelect.value;
+            const hahaProductPrice = productDatabase[currentHahaModel].price;
+            const hahaTotalCapEx = hahaProductPrice * deviceUnits;
+
+            document.getElementById('hahaPrice').textContent = '$' + hahaProductPrice.toLocaleString();
+            document.getElementById('hahaTotalPrice').textContent = '$' + hahaTotalCapEx.toLocaleString();
+            document.getElementById('hahaGrossRevenue').textContent = '$' + Math.round(globalGrossRevenue).toLocaleString();
+
+            const hahaPlatform = 15 * deviceUnits;
+            const hahaData = 15 * deviceUnits;
+            const hahaPosRental = 10 * deviceUnits;
+            const hahaTx = 30 * (itemPrice * itemsPerOrder * 0.0595) * traffic * (conversion / 100);
             
-            // 【优化修改】：使用 Math.round() 进行四舍五入取整，隐藏所有小数位，并保留千分位逗号
-            document.getElementById('resGrossRevenue').textContent = '$' + Math.round(grossRevenue).toLocaleString();
+            // AI Recognition Fee Formula
+            const hahaAiRecognition = traffic * (conversion / 100) * 0.05 * 30 * deviceUnits;
 
-            // 4. 计算回本周期 (Payback Period)
-            const denominator = grossRevenue * (margin / 100);
+            document.getElementById('hahaPlatformFee').textContent = '$' + Math.round(hahaPlatform).toLocaleString();
+            document.getElementById('hahaTxFee').textContent = '$' + Math.round(hahaTx).toLocaleString();
+            document.getElementById('hahaDataFee').textContent = '$' + Math.round(hahaData).toLocaleString();
+            document.getElementById('hahaPosRental').textContent = '$' + Math.round(hahaPosRental).toLocaleString();
+            document.getElementById('hahaAiRecognitionFee').textContent = '$' + Math.round(hahaAiRecognition).toLocaleString();
 
-            if (denominator === 0 || isNaN(denominator)) {
-                document.getElementById('resPayback').textContent = 'N/A';
+            const hahaNetProfit = (globalGrossRevenue * (margin / 100)) - hahaPlatform - hahaTx - hahaData - hahaPosRental - hahaAiRecognition;
+            document.getElementById('hahaNetProfit').textContent = '$' + Math.round(hahaNetProfit).toLocaleString();
+
+            if (hahaNetProfit <= 0 || isNaN(hahaNetProfit)) {
+                document.getElementById('hahaPayback').textContent = 'N/A';
             } else {
-                const payback = (productPrice * deviceUnits) / denominator;
-                
-                // 【优化修改】：使用 Math.round() 进行四舍五入取整，隐藏所有小数位
-                document.getElementById('resPayback').textContent = Math.round(payback).toLocaleString() + ' Months';
+                const hahaPayback = hahaTotalCapEx / hahaNetProfit;
+                document.getElementById('hahaPayback').textContent = hahaPayback.toFixed(1) + ' Months';
             }
         }
 
-        // 监听前台所有触发器事件
         modelSelect.addEventListener('change', calculate);
-        inputs.forEach(id => {
-            elements[id].addEventListener('input', calculate);
-        });
+        inputs.forEach(id => elements[id].addEventListener('input', calculate));
 
-        // 初始首次计算载入
         calculate();
     </script>
 </body>
